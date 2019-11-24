@@ -4,5 +4,5 @@ class Review < ApplicationRecord
 
   has_one :booking, through: :user
   validates :description, presence: true
-  validates :rating, includes: { in: [1, 2, 3, 4, 5] }
+  validates :rating, inclusion: { in: [1, 2, 3, 4, 5] }
 end
