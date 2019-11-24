@@ -31,26 +31,6 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   }
-
-  .btn-stretch {
-    background: #FF5F85;
-    border-radius: 6px;
-    height: 60px;
-    margin-top: 10px;
-    font-weight: 600;
-    font-size: 17px;
-    line-height: 24px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    width: 100%;
-    opacity: 1;
-    transition: 0.3s;
-
-    &:hover {
-    background: #f24671;
-    }
-  }
 }
 
 .form-annotation {
@@ -60,6 +40,31 @@
   a {
     line-height: 2.2;
   }
+}
+
+.btn-stretch {
+  background: #FF5F85;
+  border-radius: 6px;
+  height: 60px;
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 24px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  width: 100%;
+  opacity: 1;
+  transition: 0.3s;
+
+  &:hover {
+  background: #f24671;
+  }
+}
+
+.badge-stretch {
+  background: #FF5F85;
+  color: #FFFFFF;
 }
 
 

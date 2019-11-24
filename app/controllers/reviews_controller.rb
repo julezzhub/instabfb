@@ -1,12 +1,13 @@
 class ReviewsController < ApplicationController
   def create
     @boyfriend = Boyfriend.find(params[:boyfriend_id])
-    @boyfriend = Boyfriend.new(review_params)
-    @review.boyfriend = @boyfriend
+    @review = Review.new(review_params) # informatino passed through form (with params)
+    @review.boyfriend = @boyfriend # boyfriend thats being reviewed
+    @review.user = current_user # the review is linked to the current user
     if @review.save
       redirect_to boyfriend_path(@boyfriend)
     else
-      render 'reviews/new'
+      render 'boyfriends/show'
     end
   end
 
