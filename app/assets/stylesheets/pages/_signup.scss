@@ -1,0 +1,62 @@
+.devise-container {
+  justify-content: center;
+  margin: 60px auto;
+  width: 500px;
+  height: 700px;
+  padding: 30px 50px;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+  border-radius: 5px;
+
+  h2 {
+    font-weight: bold;
+    font-style: normal;
+    font-size: 43.7px;
+    margin-bottom: 20px;
+  }
+
+  label {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  }
+}
+
+.form-annotation {
+  color: #6B758A;
+  padding-top: 20px;
+
+  a {
+    line-height: 2.2;
+  }
+}
+
+.btn-stretch {
+  background: #FF5F85;
+  border-radius: 6px;
+  height: 60px;
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 24px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  width: 100%;
+  opacity: 1;
+  transition: 0.3s;
+
+  &:hover {
+  background: #f24671;
+  }
+}
+
+.badge-stretch {
+  background: #FF5F85;
+  color: #FFFFFF;
+}
+
+

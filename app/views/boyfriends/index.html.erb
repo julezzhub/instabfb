@@ -1,0 +1,7 @@
+<h1>Here are the available boyfriends</h1>
+<% @boyfriends.each do |boyfriend| %>
+  <ol>
+  <li><%= link_to boyfriend.name, boyfriend_path(boyfriend) %></li>
+  </ol>
+  <% end %>
+<%= link_to 'Add a Boyfriend', new_boyfriend_path%>
