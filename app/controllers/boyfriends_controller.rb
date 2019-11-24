@@ -23,7 +23,7 @@ class BoyfriendsController < ApplicationController
 
   private
 
-  def boyfriends_params
+  def boyfriend_params
     params.require(:boyfriend).permit(:name, :description)
   end
 end
