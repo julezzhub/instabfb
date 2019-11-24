@@ -1,2 +1,26 @@
-<h1>Boyfriends#show</h1>
-<p>Find me in app/views/boyfriends/show.html.erb</p>
+<div class="container">
+
+  <h1><%= @boyfriend.name %></h1>
+
+<h3>Reviews</h3>
+    <% if @boyfriend.reviews.empty? %>
+      <p> Let us know how <%= @boyfriend.name %> was!</p>
+    <% else %>
+      <ul class="list-group">
+        <% @boyfriend.reviews.each do |review| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span class="badge badge-primary badge-pill">
+              <% counter = 0 %>
+              <% 5.times do %>
+                <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %> "></i>
+                <% counter += 1 %>
+              <% end %>
+            </span>
+            <%= review.description %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  <%= render "reviews/new", boyfriend: @boyfriend, review: @review %>
+
+</div>
