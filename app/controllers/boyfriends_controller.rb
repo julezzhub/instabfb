@@ -5,6 +5,7 @@ class BoyfriendsController < ApplicationController
 
   def show
     @boyfriend = Boyfriend.find(params[:id])
+    @review = Review.new
   end
 
   def new
