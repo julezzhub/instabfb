@@ -6,5 +6,4 @@
     min: 500,
     max: 10000,
     from: 2000,
-    skin: 'round',
 });
