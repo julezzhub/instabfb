@@ -1,0 +1,31 @@
+<div class="d-flex justify-content-around align-items-center">
+	<h1 class="m-5">Your past relationships, <%= current_user.name %></h1>
+</div>
+
+<div class="container justify-content-center">
+  <div class="border-bottom">
+
+      <h3>Your current bookings</h3>
+      <% @current_bookings.each do |booking| %>
+        <%= booking.start_date.strftime(" Start Date: %m/%d/%Y") %>
+        <%= booking.end_date.strftime(" End Date:  %m/%d/%Y")  %>
+        <%= booking.boyfriend.name %>
+      <% end %>
+  </div>
+
+<br>
+
+  <div class="border-bottom">
+    <h3>Your past bookings</h3>
+
+    <% @past_bookings.each do |booking| %>
+      <%= booking.start_date%>
+      <%= booking.end_date %>
+      <%= booking.boyfriend.name %>
+    <% end %>
+  </div>
+
+<br>
+    <%= link_to "Book a new Boyfriend", new_boyfriend_path, class: 'btn-stretch' %>
+</div>
+
