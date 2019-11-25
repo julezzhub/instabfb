@@ -13,14 +13,14 @@
       <% end %>
   </div>
 
-<br>
+  <br>
 
   <div class="border-bottom">
     <h3>Your past bookings</h3>
 
     <% @past_bookings.each do |booking| %>
-      <%= booking.start_date%>
-      <%= booking.end_date %>
+      <%= booking.start_date.strftime(" Start Date: %m/%d/%Y")%>
+      <%= booking.end_date.strftime(" End Date: %m/%d/%Y") %>
       <%= booking.boyfriend.name %>
     <% end %>
   </div>
