@@ -9,8 +9,8 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
+ActiveRecord::Schema.define(version: 2019_11_24_162237) do
 
-ActiveRecord::Schema.define(version: 2019_11_24_174635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,12 @@ ActiveRecord::Schema.define(version: 2019_11_24_174635) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "likes"
+    t.string "location"
+    t.integer "height"
+    t.string "smartphone_model"
+    t.string "pet"
+    t.string "category"
     t.index ["user_id"], name: "index_boyfriends_on_user_id"
   end
 
