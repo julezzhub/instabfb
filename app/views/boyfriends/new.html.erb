@@ -1,5 +1,9 @@
-<%= simple_form_for @boyfriend do |f| %>
-        <%= f.input :name %>
-        <%= f.input :description %>
-        <%= f.button :submit, class: "btn-stretch"%>
-      <% end %>
+<%= simple_form_for @boyfriend, html: { multipart: true } do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.fields_for :images do |p| %>
+    <%= p.label :link %><br>
+    <%= p.file_field :link, multiple: true, name: "images[link][]" %>
+  <% end %>
+  <%= f.button :submit, class: "btn-stretch"%>
+<% end %>
