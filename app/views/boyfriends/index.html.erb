@@ -1,7 +1,7 @@
 <h1>Here are the available boyfriends</h1>
 <% @boyfriends.each do |boyfriend| %>
-  <ol>
+  <ul>
   <li><%= link_to boyfriend.name, boyfriend_path(boyfriend) %></li>
-  </ol>
+  </ul>
   <% end %>
 <%= link_to 'Add a Boyfriend', new_boyfriend_path%>

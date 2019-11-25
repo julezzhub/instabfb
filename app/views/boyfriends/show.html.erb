@@ -1,9 +1,10 @@
-
 <div class="container">
 
   <h1><%= @boyfriend.name %></h1>
   <h4>- <%= @boyfriend.description %> -</h4>
-
+  <% @images.each do |photo| %>
+    <%= cl_image_tag photo.link, height: 300, width: 400, crop: :fill %>
+  <% end %>
 <br>
 
   <h3>Reviews</h3>
