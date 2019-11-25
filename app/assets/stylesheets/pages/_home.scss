@@ -1,6 +1,6 @@
 // Specific CSS for your home-page
 .main-container {
-  padding-top: 20px;
+  padding-top: 60px;
 }
 #img {
   background-image: asset-url('img3.jpg');
@@ -46,11 +46,18 @@
     opacity: 0;
   }
 
+  input {
+    opacity: 0;
+  }
+
+  .irs {
+    opacity: 0;
+  }
 
   &:hover {
     opacity: 0.95;
     transition: 1s;
-    height: 550px;
+    height: 350px;
 
     label {
       opacity: 0.95;
@@ -64,15 +71,18 @@
       opacity: 0.95;
       transition: 1s;
     }
+    .irs {
+    opacity: 0.95;
+    }
   }
 }
 
-.input2 {
+.input1 {
   display: inline-block;
   width: 100%;
 }
 
-.input3 {
+.input2 {
   display: inline-block;
   width: 100%;
 }

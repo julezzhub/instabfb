@@ -6,7 +6,7 @@ class PagesController < ApplicationController
 
   def search
     @boyfriends = Boyfriend.all
-    @search = params['search']
+    @search = params['boyfriend']
     @location = @search['location']
     @likes = @search['likes']
     @height = @search['height']
@@ -15,5 +15,6 @@ class PagesController < ApplicationController
     @category = @search['category']
 
     @boyfriends = Boyfriend.where(location: @location, likes: @likes, height: @height, smartphone_model: @smartphone_model, pet: @pet, category: @category)
+    redirect_to boyfriends_path(@boyfriends)
   end
 end
