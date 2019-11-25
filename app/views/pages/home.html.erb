@@ -1,0 +1,33 @@
+<div class="main-container" id="img">
+  <div class="search-container row">
+    <h2>Rent an Instagram Boyfriend</h2>
+    <div class="form">
+      <div class="input1 col-12">
+      <%= simple_form_for(@boyfriend) do |f|%>
+      <%= f.input :location %>
+      </div>
+      <div class="input2 d-flex">
+        <div class="likes-input col-md-6">
+          <%= f.input :likes, label: 'Average likes' %>
+        </div>
+        <div class="height-input col-md-6">
+          <%= f.input :height %>
+        </div>
+      </div>
+      <div class="input3 d-flex" id="transparency">
+        <div class="smartphone-input col-md-6">
+          <%= f.input :smartphone_model, label: 'Smartphone', collection: ['iPhone 11 Pro', 'iPhone Xs', '< iPhone X', 'Oppo A5', 'Samsung Galaxy S10+', 'Huawei Mate 20', 'Nokia 6600', 'Blackberry Pearl 8100'] %>
+        </div>
+        <div class="pet-input col-md-6" id="transparency">
+          <%= f.input :pet, collection: ['Huskey', 'Chichuahua', 'Dachshund', 'Guinea Pig', 'Ferret', 'New York Rat', 'Cat', 'Goldfish', 'Lizard', 'Mole'] %>
+        </div>
+      </div>
+      <div class="input4 col-12" id="transparency">
+      <%= f.input :category, collection: ['Beach', 'Adventure', 'Cosy', 'Watersport', 'City', 'Kink', 'Daring', '**Celeberity**'] %>
+      <%= f.button :submit, 'Browse Instaboys', class: 'btn-stretch' %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
