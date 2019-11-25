@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_boyfriend, only: %i[new create]
+
   def new
     @booking = Booking.new
   end
