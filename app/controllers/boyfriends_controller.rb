@@ -23,6 +23,7 @@ class BoyfriendsController < ApplicationController
       end
       redirect_to boyfriend_path(@boyfriend)
     else
+      @boyfriend.images.build
       render 'new'
     end
   end
