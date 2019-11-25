@@ -1,7 +1,7 @@
 <div class="main-containerShow">
 
   <h1><%= @boyfriend.name %></h1>
-<div id="carouselBoyfriend" class="carousel slide" data-ride="carousel">
+  <div id="carouselBoyfriend" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner" style="height: 600px">
       <% @images.each_with_index do |photo, index| %>
       <% if index == 0 %>
@@ -32,7 +32,7 @@
     <div class="details-flexbox">
       <% if @boyfriend.likes != nil  %>
         <div class="card-product">
-          <img src="instaheart.png" />
+          <img <%= image_tag "instaheart.png" %>
           <div class="card-product-infos">
           <h1>Likes</h1>
           <p>  <%= @boyfriend.likes %> </p>
@@ -41,7 +41,7 @@
         <% end %>
       <% if @boyfriend.location != nil  %>
         <div class="card-product">
-          <img src="pin.png" />
+          <img <%= image_tag "pin.png" %>
           <div class="card-product-infos">
           <h1>Location</h1>
           <p>  <%= @boyfriend.location %> </p>
@@ -50,7 +50,7 @@
         <% end %>
       <% if @boyfriend.height != nil  %>
         <div class="card-product">
-          <img src="height-icon.png" />
+          <img <%= image_tag "height_icon.png" %>
           <div class="card-product-infos">
           <h1>Height</h1>
           <p> <%= @boyfriend.height %> </p>
@@ -59,7 +59,7 @@
         <% end %>
       <% if @boyfriend.smartphone_model != nil  %>
         <div class="card-product">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <img <%= image_tag "phone.png" %>
           <div class="card-product-infos">
           <h1>Smartphone</h1>
           <p> <%= @boyfriend.smartphone_model %> </p>
@@ -68,7 +68,7 @@
       <% end %>
       <% if @boyfriend.pet != nil  %>
       <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <img <%= image_tag "paw.png" %>
         <div class="card-product-infos">
         <h1>Pet</h1>
         <p> <%= @boyfriend.pet %></p>
@@ -77,7 +77,7 @@
       <% end %>
       <% if @boyfriend.category != nil  %>
       <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <img <%= image_tag "newBoy.jpg" %>
         <div class="card-product-infos">
         <h1>Category</h1>
         <p> <%= @boyfriend.category %> </p>
@@ -87,7 +87,7 @@
     </div>
   </div>
   <br>
-  <h3>Reviews</h3>
+  <h4>Reviews</h4>
   <% if @boyfriend.reviews.empty? %>
   <p>Let us know how <%= @boyfriend.name %> was!</p>
   <% else %>
@@ -108,7 +108,6 @@
   <% end %>
   <%= render "reviews/new", boyfriend: @boyfriend, review: @review %>
   <br>
-  <%= link_to 'Back to Boyfriends Overview', boyfriends_path %>
-  <br>
   <%= link_to 'Book this Boyfriend', new_boyfriend_booking_path(@boyfriend) %>
+</div>
 </div>
