@@ -3,30 +3,32 @@
   <h1><%= @boyfriend.name %></h1>
   <h4>- <%= @boyfriend.description %> -</h4>
   <% @images.each do |photo| %>
-    <%= cl_image_tag photo.link, height: 300, width: 400, crop: :fill %>
+  <%= cl_image_tag photo.link, height: 300, width: 400, crop: :fill %>
   <% end %>
-<br>
+  <br>
 
   <h3>Reviews</h3>
-    <% if @boyfriend.reviews.empty? %>
-      <p>Let us know how <%= @boyfriend.name %> was!</p>
-    <% else %>
-      <ul class="list-group">
-        <% @boyfriend.reviews.each do |review| %>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            <span class="badge-stretch badge-pill">
-              <% counter = 0 %>
-              <% 5.times do %>
-                <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
-                <% counter += 1 %>
-              <% end %>
-            </span>
-            <%= review.description %>
-          </li>
+  <% if @boyfriend.reviews.empty? %>
+  <p>Let us know how <%= @boyfriend.name %> was!</p>
+  <% else %>
+  <ul class="list-group">
+    <% @boyfriend.reviews.each do |review| %>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <span class="badge-stretch badge-pill">
+        <% counter = 0 %>
+        <% 5.times do %>
+        <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
+        <% counter += 1 %>
         <% end %>
-      </ul>
+      </span>
+      <%= review.description %>
+    </li>
     <% end %>
+  </ul>
+  <% end %>
   <%= render "reviews/new", boyfriend: @boyfriend, review: @review %>
   <br>
-  <%= link_to 'Back to home page', boyfriends_path %>
+  <%= link_to 'Back to Boyfriends Overview', boyfriends_path %>
+  <br>
+  <%= link_to 'Book this Boyfriend', new_boyfriend_booking_path(@boyfriend) %>
 </div>
