@@ -1,2 +1,6 @@
 <h1><%= @boyfriend.name %></h1>
 <h2><%= @boyfriend.description %></h2>
+
+<% @images.each do |photo| %>
+<%= cl_image_tag photo.link, height: 300, width: 400, crop: :fill %>
+<% end %>
