@@ -10,6 +10,12 @@ require 'faker'
 Review.destroy_all
 puts "Destroying all reviews"
 
+Booking.destroy_all
+puts "Destroying all bookings"
+
+Image.destroy_all
+puts "Destroying all images"
+
 Boyfriend.destroy_all
 puts "Destroying all boyfriends"
 

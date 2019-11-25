@@ -30,27 +30,27 @@
     <br>
     <h4>Details</h4>
     <div class="details-flexbox">
-      <%# if @boyfriend.likes != nil  %>
+      <% if @boyfriend.likes != nil  %>
         <div class="card-product">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <img src="instaheart.png" />
           <div class="card-product-infos">
           <h1>Likes</h1>
           <p>  <%= @boyfriend.likes %> </p>
          </div>
         </div>
-        <%# end %>
-      <%# if @boyfriend.location != nil  %>
+        <% end %>
+      <% if @boyfriend.location != nil  %>
         <div class="card-product">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <img src="pin.png" />
           <div class="card-product-infos">
           <h1>Location</h1>
           <p>  <%= @boyfriend.location %> </p>
          </div>
         </div>
-        <%# end %>
+        <% end %>
       <% if @boyfriend.height != nil  %>
         <div class="card-product">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <img src="height-icon.png" />
           <div class="card-product-infos">
           <h1>Height</h1>
           <p> <%= @boyfriend.height %> </p>
