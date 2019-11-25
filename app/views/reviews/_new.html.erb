@@ -3,5 +3,5 @@
 <%= simple_form_for [@boyfriend, @review] do |f| %>
   <%= f.input :rating, collection: 1..5 %>
   <%= f.input :description %>
-  <%= f.submit class: "btn-stretch"%>
+  <%= f.button :submit, class: "btn-stretch"%>
 <% end %>
