@@ -7,6 +7,7 @@ class BoyfriendsController < ApplicationController
     @boyfriend = Boyfriend.find(params[:id])
     @images = @boyfriend.images.all
     @review = Review.new
+    @booking = Booking.new
   end
 
   def new
