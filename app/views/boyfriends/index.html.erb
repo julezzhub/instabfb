@@ -13,7 +13,9 @@
       <%= link_to boyfriend_path(boyfriend) do %>
         <div class="card-bf">
           <div class="bf-upperwrap">
-            <%= image_tag "logo.png", alt: boyfriend.user.name, class:"avatar"%>
+            <img src="https://source.unsplash.com/collection/566311/<%= rand(1..268) %>", alt: <%= boyfriend.user.name %>, class="avatar" style="object-fit: cover">
+            <!-- DON'T DELETE next line! Need cl_image_tag for actual user input, but img for hard code for demo purposes
+              <%#= image_tag "https://source.unsplash.com/collection/566311/", alt: boyfriend.user.name, class:"avatar"%> -->
             <span><%= boyfriend.name %></span>
           </div>
           <img src="https://source.unsplash.com/collection/2303600/<%= rand(1..268) %>" alt= <%= boyfriend.name %>, class="card-bf-picture">
