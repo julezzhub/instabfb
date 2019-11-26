@@ -14,7 +14,7 @@ class BoyfriendsController < ApplicationController
       @message = "These Instaboys from #{@location} are ready to up your gram"
       if @boyfriends.empty?
         if @location.empty?
-          @message = 'Browse some our best Instagram boyfriends'
+          @message = 'Discover your next Instagram boyfriend'
           @boyfriends = Boyfriend.all
         else
           @message = "No Instalovers meeting your standards. Browse some of our other options in #{@location}"
