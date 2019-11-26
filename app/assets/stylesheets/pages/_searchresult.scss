@@ -1,3 +1,14 @@
+#result-header {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 80px;
+
+  h1 {
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+}
+
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -5,6 +16,10 @@
   margin: 0 auto;
   width: 80%;
   justify-items: center;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .avatar {
@@ -34,7 +49,7 @@
   box-shadow: 0px 10px 30px rgba(0,0,0,.2);
   height: 550px;
   margin: 10px 0px;
-  width: 375px;
+  width: 1;
   color: black;
   opacity: 0.8;
   transition: 0.3s;
