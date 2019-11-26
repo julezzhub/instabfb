@@ -32,6 +32,6 @@ class BoyfriendsController < ApplicationController
   private
 
   def boyfriend_params
-    params.require(:boyfriend).permit(:name, :description, images_attributes: [:id, :boyfriend_id, :link])
+    params.require(:boyfriend).permit(:name, :description, :height, :smartphone_model, :category, :pet, :location, :likes, images_attributes: [:id, :boyfriend_id, :link])
   end
 end
