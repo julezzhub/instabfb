@@ -24,11 +24,30 @@
   width: 40px;
 }
 
+.nav-btn {
+  background-color: #FF5F85;
+  padding-right: 20px;
+  border-radius: 6px;
+  font-weight: 400;
+  opacity: 0.8 !important;
+  transition: 0.5s !important;
+  &:hover {
+    opacity: 1 !important;
+    transition: 0.5s !important;
+  }
+}
+
+.nav-link {
+  color: #FFFFFF !important;
+}
+
 .nav-color {
-	color: #FF5F85 !important; //Um Bootstrap zu überschreiben
+	color: black !important;
+  opacity: 0.8 !important;
 	&:hover {
-		color: black !important;
 		transition: 0.7s;
+    text-shadow: 0.1px 0.2px black;
+    opacity: 1 !important;
 	}
 }
 
@@ -37,3 +56,12 @@
   border-radius: 25%;
   padding: 1px;
   }
+
+.navbar-hide {
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.navbar {
+  transition: 0.5s;
+}
