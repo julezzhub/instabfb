@@ -3,29 +3,87 @@
 </div>
 
 <div class="container justify-content-center">
-  <div class="border-bottom">
-
-      <h3>Your current bookings</h3>
-      <% @current_bookings.each do |booking| %>
-        <%= booking.start_date.strftime(" Start Date: %m/%d/%Y") %>
-        <%= booking.end_date.strftime(" End Date:  %m/%d/%Y")  %>
-        <%= booking.boyfriend.name %>
-      <% end %>
-  </div>
-
-  <br>
-
-  <div class="border-bottom">
-    <h3>Your past bookings</h3>
-
-    <% @past_bookings.each do |booking| %>
-      <%= booking.start_date.strftime(" Start Date: %m/%d/%Y")%>
-      <%= booking.end_date.strftime(" End Date: %m/%d/%Y") %>
-      <%= booking.boyfriend.name %>
+  <h3>Your current bookings</h3>
+  <div class="cards">
+    <% @current_bookings.each_with_index do |booking, i| %>
+    <div class="card-bf">
+      <div class="bf-upperwrap">
+        <%= image_tag "logo.png", alt: booking.boyfriend.user.name, class:"avatar"%>
+        <span> <%= link_to booking.boyfriend.name ,boyfriend_path(booking.boyfriend) %></span>
+      </div>
+      <%= image_tag "photographer.png", alt: booking.boyfriend.name, class:"card-bf-picture"%>
+      <div style="margin-top: 22px">
+        <div class="bf-text mx-5">
+          <div><%= booking.start_date.strftime("Start: %m/%d/%Y") %></div>
+          <div><%= booking.end_date.strftime("End: %m/%d/%Y") %></div>
+        </div>
+        <div class="bf-text">
+          <button type="button" class="btn-stretch" data-toggle="modal" data-target="#exampleModal<%= i %>">Rate Performance</button>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal<%= i %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Give him a Feedback</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= render "reviews/new", boyfriend: booking.boyfriend, review: Review.new %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal end -->
     <% end %>
   </div>
+</div>
 
 <br>
-    <%= link_to "Book a new Boyfriend", new_boyfriend_path, class: 'btn-stretch' %>
-</div>
+
+<div class="container justify-content-center">
+  <h3>Your past bookings</h3>
+  <div class="cards">
+    <% @past_bookings.each_with_index do |booking, i| %>
+    <div class="card-bf">
+      <div class="bf-upperwrap">
+        <%= image_tag "logo.png", alt: booking.boyfriend.user.name, class:"avatar"%>
+        <span> <%= link_to booking.boyfriend.name ,boyfriend_path(booking.boyfriend) %></span>
+      </div>
+      <%= image_tag "photographer.png", alt: booking.boyfriend.name, class:"card-bf-picture"%>
+      <div style="margin-top: 22px">
+        <div class="bf-text mx-5">
+          <div><%= booking.start_date.strftime("Start: %m/%d/%Y") %></div>
+          <div><%= booking.end_date.strftime("End: %m/%d/%Y") %></div>
+        </div>
+        <div class="bf-text">
+          <button type="button" class="btn-stretch" data-toggle="modal" data-target="#exampleModal<%= i %>">Rate Performance</button>
+        </div>
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal<%= i %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Give him a Feedback</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= render "reviews/new", boyfriend: booking.boyfriend, review: Review.new %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal end -->
+      <% end %>
+    </div>
+  </div>
+
+
 
