@@ -1,6 +1,7 @@
 // Specific CSS for your home-page
 .main-container {
   padding-top: 100px;
+
 }
 #img {
   background-image: asset-url('img3.jpg');
@@ -61,18 +62,19 @@
 
     label {
       opacity: 0.95;
-      transition: 1s;
+      transition: 3s;
     }
     input {
       opacity: 0.95;
-      transition: 1s;
+      transition: 3s;
     }
     #transparency {
       opacity: 0.95;
-      transition: 1s;
+      transition: 3s;
     }
     .irs {
     opacity: 0.95;
+    transition: 3s;
     }
   }
 }
