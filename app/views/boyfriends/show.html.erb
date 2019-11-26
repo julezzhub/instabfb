@@ -29,61 +29,71 @@
     <p><%= @boyfriend.description %></p>
     <br>
     <h4>Details</h4>
-    <div class="details-flexbox">
-      <% if @boyfriend.likes != nil  %>
+    <div class="flex_container">
+      <div class="details-flexbox">
+        <% if @boyfriend.likes != nil  %>
+          <div class="card-product">
+            <img <%= image_tag "instaheart.png" %>
+            <div class="card-product-infos">
+            <h1>Likes</h1>
+            <p>  <%= @boyfriend.likes %> </p>
+           </div>
+          </div>
+          <% end %>
+        <% if @boyfriend.location != nil  %>
+          <div class="card-product">
+            <img <%= image_tag "pin.png" %>
+            <div class="card-product-infos">
+            <h1>Location</h1>
+            <p>  <%= @boyfriend.location %> </p>
+           </div>
+          </div>
+          <% end %>
+        <% if @boyfriend.height != nil  %>
+          <div class="card-product">
+            <img <%= image_tag "height_icon.png" %>
+            <div class="card-product-infos">
+            <h1>Height</h1>
+            <p> <%= @boyfriend.height %> </p>
+          </div>
+          </div>
+          <% end %>
+        <% if @boyfriend.smartphone_model != nil  %>
+          <div class="card-product">
+            <img <%= image_tag "phone.png" %>
+            <div class="card-product-infos">
+            <h1>Smartphone</h1>
+            <p> <%= @boyfriend.smartphone_model %> </p>
+           </div>
+          </div>
+        <% end %>
+        <% if @boyfriend.pet != nil  %>
         <div class="card-product">
-          <img <%= image_tag "instaheart.png" %>
+          <img <%= image_tag "paw.png" %>
           <div class="card-product-infos">
-          <h1>Likes</h1>
-          <p>  <%= @boyfriend.likes %> </p>
-         </div>
+          <h1>Pet</h1>
+          <p> <%= @boyfriend.pet %></p>
+          </div>
         </div>
         <% end %>
-      <% if @boyfriend.location != nil  %>
+        <% if @boyfriend.category != nil  %>
         <div class="card-product">
-          <img <%= image_tag "pin.png" %>
+          <img <%= image_tag "newBoy.jpg" %>
           <div class="card-product-infos">
-          <h1>Location</h1>
-          <p>  <%= @boyfriend.location %> </p>
-         </div>
+          <h1>Category</h1>
+          <p> <%= @boyfriend.category %> </p>
+          </div>
         </div>
         <% end %>
-      <% if @boyfriend.height != nil  %>
-        <div class="card-product">
-          <img <%= image_tag "height_icon.png" %>
-          <div class="card-product-infos">
-          <h1>Height</h1>
-          <p> <%= @boyfriend.height %> </p>
-        </div>
-        </div>
-        <% end %>
-      <% if @boyfriend.smartphone_model != nil  %>
-        <div class="card-product">
-          <img <%= image_tag "phone.png" %>
-          <div class="card-product-infos">
-          <h1>Smartphone</h1>
-          <p> <%= @boyfriend.smartphone_model %> </p>
-         </div>
-        </div>
-      <% end %>
-      <% if @boyfriend.pet != nil  %>
-      <div class="card-product">
-        <img <%= image_tag "paw.png" %>
-        <div class="card-product-infos">
-        <h1>Pet</h1>
-        <p> <%= @boyfriend.pet %></p>
-        </div>
       </div>
-      <% end %>
-      <% if @boyfriend.category != nil  %>
-      <div class="card-product">
-        <img <%= image_tag "newBoy.jpg" %>
-        <div class="card-product-infos">
-        <h1>Category</h1>
-        <p> <%= @boyfriend.category %> </p>
-        </div>
+      <div class="booking-container">
+      <h4>Bookings</h4>
+        <%= simple_form_for [@boyfriend, @booking] do |f| %>
+        <%= f.input :start_date %>
+        <%= f.input :end_date %>
+        <%= f.submit class: "btn-stretch"%>
+        <% end %>
       </div>
-      <% end %>
     </div>
   </div>
   <br>

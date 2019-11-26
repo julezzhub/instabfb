@@ -11,7 +11,7 @@
 };
 
 .details-flexbox {
-  width: 50%;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
@@ -63,4 +63,10 @@
 
 .card-product .card-product-infos {
   padding: 16px;
+}
+
+.flex_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
 }
