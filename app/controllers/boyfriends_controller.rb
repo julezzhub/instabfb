@@ -1,6 +1,24 @@
 class BoyfriendsController < ApplicationController
   def index
-    @boyfriends = Boyfriend.all
+    if params.include?(:search)
+      @search = params['search']
+      @location = @search['location'].capitalize
+      @likes = @search[:likes].split(";").map(&:to_i)
+      @likes_range = Boyfriend.range_likes(@likes[0], @likes[1])
+        # @height = @search['height']
+        # @smartphone_model = @search['smartphone_model']
+        # @pet = @search['pet']
+        # @category = @search['category']
+      @boyfriends = @likes_range.select { |boyfriend| (boyfriend.location == @location) }
+      @message = "These Instaboys from #{@location} are ready to up your gram"
+      if @boyfriends.empty?
+        @message = "No Instalovers meeting your standards. Browse some of our other options in #{@location}"
+        @boyfriends = Boyfriend.where(location: @location)
+      end
+    else
+      @message = 'Browse some our best Instagram boyfriends'
+      @boyfriends = Boyfriend.all
+    end
   end
 
   def show
