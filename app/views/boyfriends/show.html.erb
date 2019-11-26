@@ -1,7 +1,8 @@
 <div class="main-containerShow">
 
   <h1><%= @boyfriend.name %></h1>
-<div id="carouselBoyfriend" class="carousel slide" data-ride="carousel">
+  <br>
+  <div id="carouselBoyfriend" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner" style="height: 600px">
       <% @images.each_with_index do |photo, index| %>
       <% if index == 0 %>
@@ -28,66 +29,86 @@
     <h4>Description</h4>
     <p><%= @boyfriend.description %></p>
     <br>
-    <h4>Details</h4>
-    <div class="details-flexbox">
-      <% if @boyfriend.likes != nil  %>
-        <div class="card-product">
-          <img src="instaheart.png" />
-          <div class="card-product-infos">
-          <h1>Likes</h1>
-          <p>  <%= @boyfriend.likes %> </p>
-         </div>
-        </div>
-        <% end %>
-      <% if @boyfriend.location != nil  %>
-        <div class="card-product">
-          <img src="pin.png" />
-          <div class="card-product-infos">
-          <h1>Location</h1>
-          <p>  <%= @boyfriend.location %> </p>
-         </div>
-        </div>
-        <% end %>
-      <% if @boyfriend.height != nil  %>
-        <div class="card-product">
-          <img src="height-icon.png" />
-          <div class="card-product-infos">
-          <h1>Height</h1>
-          <p> <%= @boyfriend.height %> </p>
-        </div>
-        </div>
-        <% end %>
-      <% if @boyfriend.smartphone_model != nil  %>
-        <div class="card-product">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-          <div class="card-product-infos">
-          <h1>Smartphone</h1>
-          <p> <%= @boyfriend.smartphone_model %> </p>
-         </div>
-        </div>
-      <% end %>
-      <% if @boyfriend.pet != nil  %>
-      <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-        <div class="card-product-infos">
-        <h1>Pet</h1>
-        <p> <%= @boyfriend.pet %></p>
+    <div class="flex_container">
+      <div class="booking-container">
+        <div>
+          <h4>Details</h4>
+          <br>
+          <div class="details-flexbox">
+            <% if @boyfriend.likes != nil  %>
+              <div class="card-product">
+                <img <%= image_tag "instaheart.png" %>
+                <div class="card-product-infos">
+                <h1>Likes</h1>
+                <p>  <%= @boyfriend.likes %> </p>
+               </div>
+              </div>
+              <% end %>
+            <% if @boyfriend.location != nil  %>
+              <div class="card-product">
+                <img <%= image_tag "pin.png" %>
+                <div class="card-product-infos">
+                <h1>Location</h1>
+                <p>  <%= @boyfriend.location %> </p>
+               </div>
+              </div>
+              <% end %>
+            <% if @boyfriend.height != nil  %>
+              <div class="card-product">
+                <img <%= image_tag "height_icon.png" %>
+                <div class="card-product-infos">
+                <h1>Height</h1>
+                <p> <%= @boyfriend.height %> </p>
+              </div>
+              </div>
+              <% end %>
+            <% if @boyfriend.smartphone_model != nil  %>
+              <div class="card-product">
+                <img <%= image_tag "phone.png" %>
+                <div class="card-product-infos">
+                <h1>Phone</h1>
+                <p> <%= @boyfriend.smartphone_model %> </p>
+               </div>
+              </div>
+            <% end %>
+            <% if @boyfriend.pet != nil  %>
+            <div class="card-product">
+              <img <%= image_tag "paw.png" %>
+              <div class="card-product-infos">
+              <h1>Pet</h1>
+              <p> <%= @boyfriend.pet %></p>
+              </div>
+            </div>
+            <% end %>
+            <% if @boyfriend.category != nil  %>
+            <div class="card-product">
+              <img <%= image_tag "photographer.png" %>
+              <div class="card-product-infos">
+              <h1>Category</h1>
+              <p> <%= @boyfriend.category %> </p>
+              </div>
+            </div>
+            <% end %>
+          </div>
         </div>
       </div>
-      <% end %>
-      <% if @boyfriend.category != nil  %>
-      <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-        <div class="card-product-infos">
-        <h1>Category</h1>
-        <p> <%= @boyfriend.category %> </p>
+      <div>
+        <div class="booking-container">
+          <div class="form-wrapper" style="width: 100%">
+            <h4>Hook me up!</h4>
+            <br>
+            <%= simple_form_for [@boyfriend, @booking] do |f| %>
+            <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"}%>
+            <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+            <%= f.button :submit, 'Get Relationship', class: "btn-stretch"%>
+            <% end %>
+          </div>
         </div>
       </div>
-      <% end %>
     </div>
   </div>
   <br>
-  <h3>Reviews</h3>
+  <h4>Reviews</h4>
   <% if @boyfriend.reviews.empty? %>
   <p>Let us know how <%= @boyfriend.name %> was!</p>
   <% else %>
@@ -106,8 +127,4 @@
     <% end %>
   </ul>
   <% end %>
-  <br>
-  <%= link_to 'Back to Boyfriends Overview', boyfriends_path %>
-  <br>
-  <%= link_to 'Book this Boyfriend', new_boyfriend_booking_path(@boyfriend) %>
 </div>

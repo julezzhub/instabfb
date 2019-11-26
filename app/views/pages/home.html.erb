@@ -3,7 +3,7 @@
     <h2>Rent an Instagram Boyfriend</h2>
     <div class="form">
       <div class="input1 col-12">
-        <%= simple_form_for @boyfriend, :url => search_path, :method => :get do |f|%>
+        <%= simple_form_for :search, :url => boyfriends_path, :method => :get do |f|%>
         <%= f.input :location %>
       </div>
       <div class="input2 col-12">

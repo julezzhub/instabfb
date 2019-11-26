@@ -11,9 +11,10 @@
 };
 
 .details-flexbox {
-  width: 50%;
-  display: flex;
-
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
 }
 
 .detail-container {
@@ -32,8 +33,9 @@
   overflow: hidden;
   height: 80px;
   border-radius: 5px;
+  border: solid 1px;
+  border-color: #FF5F85;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
   margin-right: 20px;
@@ -41,17 +43,20 @@
     font-size: 18px;
     font-weight: bold;
     margin: 0;
+    text-align: left;
   }
 }
+.card-product:hover {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  }
 
 .card-product img {
-  height: 100%;
-  width: 80px;
-  object-fit: cover;
+  height: 50%;
+  margin-left: 5%;
 }
 
 .card-product p {
-  font-size: 8px !important;
+  font-size: 14px !important;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
@@ -59,5 +64,18 @@
 }
 
 .card-product .card-product-infos {
+  padding-left: 16px;
+}
+
+.flex_container {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  grid-gap: 10px;
+}
+
+.booking-container {
+  border-radius: 5px;
+  height: 370px;
   padding: 16px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }

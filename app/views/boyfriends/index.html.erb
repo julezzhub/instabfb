@@ -1,4 +1,4 @@
-<h1>Here are the available boyfriends</h1>
+<h1><%= @message %></h1>
 <div class="cards">
   <% @boyfriends.each do |boyfriend| %>
     <%= link_to boyfriend_path(boyfriend) do %>
@@ -7,7 +7,8 @@
           <%= image_tag "logo.png", alt: boyfriend.user.name, class:"avatar"%>
           <span><%= boyfriend.name %></span>
         </div>
-        <%= image_tag "img1.jpg", alt: boyfriend.name, class:"card-bf-picture"%>
+        <img src="https://source.unsplash.com/collection/2303600/<%= rand(1..268) %>" alt= <%= boyfriend.name %>, class="card-bf-picture">
+        <%#= image_tag "img1.jpg", alt: boyfriend.name, class:"card-bf-picture"%>
         <div class="bf-text">
           <div>
             <%= image_tag "instaheart.png", alt: "Likes Icon", id:"heart-icon" %><span id="likes"><%= boyfriend.likes %> Likes</span>
@@ -26,4 +27,5 @@
     <% end %>
   <% end %>
 </div>
+
 <%= link_to 'Add a Boyfriend', new_boyfriend_path%>

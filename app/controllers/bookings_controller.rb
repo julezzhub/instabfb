@@ -1,18 +1,14 @@
 class BookingsController < ApplicationController
-  before_action :set_boyfriend, only: %i[new create]
-
-  def new
-    @booking = Booking.new
-  end
+  before_action :set_boyfriend, only: %i[create]
 
   def create
     @booking = Booking.new(booking_params)
     @booking.boyfriend = @boyfriend
     @booking.user = current_user
     if @booking.save
-      redirect_to boyfriend_path(@boyfriend)
+      redirect_to account_booking_path(current_user)
     else
-      render :new
+      render 'boyfriends/show'
     end
   end
 
