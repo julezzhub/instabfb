@@ -2,7 +2,7 @@
 
   <h1><%= @boyfriend.name %></h1>
   <br>
-  <div id="carouselBoyfriend" class="carousel slide" data-ride="carousel">
+  <div id="carouselBoyfriend" class="carousel slide carousel-fade" data-ride="carousel">
     <div class="carousel-inner" style="height: 600px">
       <% @images.each_with_index do |photo, index| %>
       <% if index == 0 %>
