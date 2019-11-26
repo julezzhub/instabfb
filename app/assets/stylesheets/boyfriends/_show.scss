@@ -33,8 +33,9 @@
   overflow: hidden;
   height: 80px;
   border-radius: 5px;
+  border: solid 1px;
+  border-color: #FF5F85;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
   margin-right: 20px;
@@ -42,10 +43,11 @@
     font-size: 18px;
     font-weight: bold;
     margin: 0;
+    text-align: left;
   }
 }
 .card-product:hover {
-  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   }
 
 .card-product img {
@@ -62,11 +64,18 @@
 }
 
 .card-product .card-product-infos {
-  padding: 16px;
+  padding-left: 16px;
 }
 
 .flex_container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.7fr 1fr;
   grid-gap: 10px;
+}
+
+.booking-container {
+  border-radius: 5px;
+  height: 370px;
+  padding: 16px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }

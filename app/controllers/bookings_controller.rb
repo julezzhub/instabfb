@@ -6,9 +6,9 @@ class BookingsController < ApplicationController
     @booking.boyfriend = @boyfriend
     @booking.user = current_user
     if @booking.save
-      redirect_to boyfriend_path(@boyfriend)
+      redirect_to account_booking_path(current_user)
     else
-      render :new
+      render 'boyfriends/show'
     end
   end
 
