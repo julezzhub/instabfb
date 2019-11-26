@@ -1,21 +1,21 @@
 <div class="d-flex justify-content-around align-items-center">
-	<h1 class="m-5">Your past relationships, <%= current_user.name %></h1>
+	<h1 class="m-5">Your past relationships, <strong><%= current_user.name %></strong></h1>
 </div>
 
-<div class="container justify-content-center">
-  <h3>Your current bookings</h3>
+  <h3 style= "margin-left: 100px"><strong>Your current boyfriends</strong></h3>
   <div class="cards">
     <% @current_bookings.each_with_index do |booking, i| %>
+    
     <div class="card-bf">
       <div class="bf-upperwrap">
-        <%= image_tag "logo.png", alt: booking.boyfriend.user.name, class:"avatar"%>
+        <img src="https://source.unsplash.com/collection/566311/<%= rand(1..268) %>", alt: <%= booking.boyfriend.user.name %>, class="avatar" style="object-fit: cover">
         <span> <%= link_to booking.boyfriend.name ,boyfriend_path(booking.boyfriend) %></span>
       </div>
-      <%= image_tag "photographer.png", alt: booking.boyfriend.name, class:"card-bf-picture"%>
+      <img src="https://source.unsplash.com/collection/2303600/<%= rand(1..268) %>" alt= <%= booking.boyfriend.name %>, class="card-bf-picture">
       <div style="margin-top: 22px">
         <div class="bf-text mx-5">
-          <div><%= booking.start_date.strftime("Start: %m/%d/%Y") %></div>
-          <div><%= booking.end_date.strftime("End: %m/%d/%Y") %></div>
+          <div><%= booking.start_date.strftime("Start %d.%m.%Y")%></div>
+          <div><%= booking.end_date.strftime("End %d.%m.%Y") %></div>
         </div>
         <div class="bf-text">
           <button type="button" class="btn-stretch" data-toggle="modal" data-target="#exampleModal<%= i %>">Rate Performance</button>
@@ -41,48 +41,47 @@
     <!-- Modal end -->
     <% end %>
   </div>
-</div>
 
 <br>
+<br>
 
-<div class="container justify-content-center">
-  <h3>Your past bookings</h3>
+  <h3 style= "margin-left: 100px"> <strong>Your past boyfriends</strong></h3>
   <div class="cards">
     <% @past_bookings.each_with_index do |booking, i| %>
     <div class="card-bf">
       <div class="bf-upperwrap">
-        <%= image_tag "logo.png", alt: booking.boyfriend.user.name, class:"avatar"%>
+        <img src="https://source.unsplash.com/collection/566311/<%= rand(1..268) %>", alt: <%= booking.boyfriend.user.name %>, class="avatar" style="object-fit: cover">
         <span> <%= link_to booking.boyfriend.name ,boyfriend_path(booking.boyfriend) %></span>
       </div>
-      <%= image_tag "photographer.png", alt: booking.boyfriend.name, class:"card-bf-picture"%>
+      <img src="https://source.unsplash.com/collection/2303600/<%= rand(1..268) %>" alt= <%= booking.boyfriend.name %>, class="card-bf-picture">
       <div style="margin-top: 22px">
         <div class="bf-text mx-5">
-          <div><%= booking.start_date.strftime("Start: %m/%d/%Y") %></div>
-          <div><%= booking.end_date.strftime("End: %m/%d/%Y") %></div>
+          <div><%= booking.start_date.strftime("Start %d.%m.%Y")%></div>
+          <div><%= booking.end_date.strftime("End %d.%m.%Y") %></div>
         </div>
         <div class="bf-text">
           <button type="button" class="btn-stretch" data-toggle="modal" data-target="#exampleModal<%= i %>">Rate Performance</button>
         </div>
       </div>
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal<%= i %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Give him a Feedback</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <%= render "reviews/new", boyfriend: booking.boyfriend, review: Review.new %>
-            </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal<%= i %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Give him a Feedback</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= render "reviews/new", boyfriend: booking.boyfriend, review: Review.new %>
           </div>
         </div>
       </div>
-      <!-- Modal end -->
-      <% end %>
     </div>
+    <!-- Modal end -->
+    <% end %>
   </div>
 
 
