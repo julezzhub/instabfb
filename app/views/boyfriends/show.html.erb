@@ -116,7 +116,7 @@
   <% else %>
   <% @boyfriend.reviews.each do |review| %>
   <div class="notification">
-  <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
+  <img src='https://source.unsplash.com/collection/566311/<%= rand(1..268) %>' class="avatar" style="object-fit: cover; width: 60px; height: 60px" />
   <div class="notification-content">
     <p><small> <strong> <%= review.user.name %></strong> on <%=review.updated_at.strftime("%d %B %Y") %></small></p>
     <p><%= review.description %></p>
