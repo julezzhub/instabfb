@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :reviews
 
   validates :name, presence: true
+  mount_uploader :avatar, PhotoUploader
 end
