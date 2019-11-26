@@ -108,23 +108,27 @@
     </div>
   </div>
   <br>
+  <br>
   <h4>Reviews</h4>
+  <br>
   <% if @boyfriend.reviews.empty? %>
-  <p>Let us know how <%= @boyfriend.name %> was!</p>
+  <p>No review has been given for <%= @boyfriend.name %>'s services yet!</p>
   <% else %>
-  <ul class="list-group">
-    <% @boyfriend.reviews.each do |review| %>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      <span class="badge-stretch badge-pill">
+  <% @boyfriend.reviews.each do |review| %>
+  <div class="notification">
+  <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
+  <div class="notification-content">
+    <p><small> <strong> <%= review.user.name %></strong> on <%=review.updated_at.strftime("%d %B %Y") %></small></p>
+    <p><%= review.description %></p>
+  </div>
+    <span class="badge-stretch badge-pill">
         <% counter = 0 %>
         <% 5.times do %>
         <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
         <% counter += 1 %>
         <% end %>
-      </span>
-      <%= review.description %>
-    </li>
-    <% end %>
-  </ul>
+    </span>
+  </div>
+  <% end %>
   <% end %>
 </div>
