@@ -11,7 +11,7 @@ class BoyfriendsController < ApplicationController
             infoWindow: render_to_string(partial: "info_window", locals: { boyfriend: boyfriend }),
             image_url: helpers.asset_url('photographer.png')
           }
-        end
+    end
 
     else
       if params[:search][:location].present? #|| params.include?(:boyfriend)

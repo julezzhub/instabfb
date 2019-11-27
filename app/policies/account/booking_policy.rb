@@ -4,4 +4,8 @@ class Account::BookingPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def pending?
+    true
+  end
 end
