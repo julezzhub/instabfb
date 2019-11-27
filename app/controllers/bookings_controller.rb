@@ -12,6 +12,22 @@ class BookingsController < ApplicationController
     end
   end
 
+  def accept
+    booking = Booking.find(params[:id])
+    booking.update(status: true)
+
+    redirect_to pending_account_bookings_path
+    flash[:notice] = "Booking accepted - have a great shoot!"
+  end
+
+  def reject
+    booking = Booking.find(params[:id])
+    booking.update(status: false)
+
+    redirect_to pending_account_bookings_path
+    flash[:notice] = "Booking rejected"
+  end
+
   private
 
   def set_boyfriend

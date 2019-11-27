@@ -5,7 +5,19 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create]
     resources :bookings, only: [:new, :create]
   end
+  resources :bookings, only:[] do
+      member do
+      post 'accept'
+    end
+    member do
+      post 'reject'
+    end
+  end
   namespace :account do
-    resources :bookings, only: [:show]
+    resources :bookings, only: [:show] do
+      collection do
+        get 'pending'
+      end
+    end
   end
 end

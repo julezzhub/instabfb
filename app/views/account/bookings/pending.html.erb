@@ -1,0 +1,62 @@
+<div class="result-header">
+  <h1>Hello <%= current_user.name %>!
+  <% if current_user.boyfriends.empty? %>
+    <span><%= "You have no boyfriends listed right now. How about listing one" %></span>
+  <% else %>
+    <span><%= "Here are your currently listed boyfriends!" %></span>
+    </h1>
+</div>
+
+
+  <div class="booking-cards">
+    <% current_user.boyfriends.each do |boyfriend| %>
+      <%= link_to boyfriend_path(boyfriend) do %>
+        <div class="card-bf">
+          <div class="bf-upperwrap">
+            <img src="https://source.unsplash.com/collection/566311/<%= rand(1..268) %>", alt: <%= boyfriend.user.name %>, class="avatar" style="object-fit: cover">
+            <!-- DON'T DELETE next line! Need cl_image_tag for actual user input, but img for hard code for demo purposes
+              <%#= image_tag "https://source.unsplash.com/collection/566311/", alt: boyfriend.user.name, class:"avatar"%> -->
+            <span><%= boyfriend.name %></span>
+          </div>
+          <img src="https://source.unsplash.com/collection/2303600/<%= rand(1..268) %>" alt= <%= boyfriend.name %>, class="card-bf-picture">
+          <%#= image_tag "img1.jpg", alt: boyfriend.name, class:"card-bf-picture"%>
+          <div class="bf-text">
+            <div>
+              <%= image_tag "instaheart.png", alt: "Likes Icon", id:"heart-icon" %><span id="likes"><%= boyfriend.likes %> Likes</span>
+              <span id="height-text"><%= boyfriend.height.fdiv(100) %>m</span> <%= image_tag "height_icon.png", alt: "Height Icon", id:"height-icon" %>
+            </div>
+            <div>
+              <%= image_tag "phone.png", alt: "Phone Icon", id:"phone-icon" %><span id="phone-model"><%= boyfriend.smartphone_model %></span>
+              <span id="location"><%= boyfriend.location %></span> <%= image_tag "pin.png", alt: "Pin Icon", id:"pin-icon" %>
+            </div>
+            <div>
+              <%= image_tag "paw.png", alt: "Paw Icon", id:"paw-icon" %><span id="pet"><%= boyfriend.pet.capitalize %></span>
+              <span id="price"><%= rand(10..170) %>.<%= rand(0..9) %>0€</span> <%= image_tag "pricetag.png", alt: "Price Icon", id:"price-icon" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+        <div class="booking-status">
+          <% if boyfriend.bookings.where(status: nil).empty? %>
+          <h4 class="empty-card"><%= boyfriend.name %> does not have any pending bookings right now</h4>
+          <% else %>
+          <h5 style="padding-top:20px; margin:8px; font-weight: bold;" class="text-center"><%= boyfriend.name.upcase %>'s BOOKING REQUESTS</h5>
+            <% boyfriend.bookings.where(status: nil).each do |booking| %>
+              <div class="booking-request">
+                <div class="request-upperwrap">
+                  <img src="https://source.unsplash.com/collection/566311/<%= rand(1..268) %>", alt: <%= boyfriend.user.name %>, class="avatar" style="object-fit: cover">
+                  <!-- DON'T DELETE next line! Need cl_image_tag for actual user input, but img for hard code for demo purposes
+                    <%#= image_tag "https://source.unsplash.com/collection/566311/", alt: boyfriend.user.name, class:"avatar"%> -->
+                  <span style="padding-left: 8px;"><%= booking.user.name %> would like to take <%= boyfriend.name %> for an instashoot from <b><%= booking.start_date.strftime("%d %B") %></b> to
+                      <b><%= booking.end_date.strftime("%d %B %Y") %></b></span>
+                </div>
+                <div class="status-change">
+                  <%= button_to "Accept", accept_booking_path(booking), class:"status-option text-center", style:"width: 100%; border-left: none"%>
+                  <%= button_to "Reject", reject_booking_path(booking), class:"status-option text-center", style:"width: 100%; border-right: none"%>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+    <% end %>
+<% end %>
