@@ -6,10 +6,11 @@ class BookingsController < ApplicationController
     @booking.boyfriend = @boyfriend
     @booking.user = current_user
     if @booking.save
-      redirect_to account_booking_path(current_user)
+      redirect_to account_bookings_path(current_user)
     else
       render 'boyfriends/show'
     end
+    authorize @booking
   end
 
   def accept

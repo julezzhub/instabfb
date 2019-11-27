@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
   namespace :account do
-    resources :bookings, only: [:show] do
+    resources :bookings, only: [:index] do
       collection do
         get 'pending'
       end

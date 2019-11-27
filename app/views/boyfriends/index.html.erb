@@ -1,6 +1,6 @@
 <div class="result-header">
   <h1><%= @message %></h1>
-</div>
+<div class="index">
   <%#= simple_form_for @boyfriend, :url => boyfriends_path, :method => :get do |f|%>
   <%#= f.input :location, input_html: { value: @location }%>
   <%#= f.input :likes, label: 'Average likes', input_html: { class: 'js-range-slider', value: @likes } %>
@@ -26,7 +26,7 @@
             </div>
             <div>
               <%= image_tag "phone.png", alt: "Phone Icon", id:"phone-icon" %><span id="phone-model"><%= boyfriend.smartphone_model %></span>
-              <span id="location"><%= boyfriend.location %></span> <%= image_tag "pin.png", alt: "Pin Icon", id:"pin-icon" %>
+              <span id="location"><%= boyfriend.location.match(/(?<=\, ).*/)%></span> <%= image_tag "pin.png", alt: "Pin Icon", id:"pin-icon" %>
             </div>
             <div>
               <%= image_tag "paw.png", alt: "Paw Icon", id:"paw-icon" %><span id="pet"><%= boyfriend.pet.capitalize %></span>
@@ -36,6 +36,13 @@
         </div>
       <% end %>
     <% end %>
+  </div>
+  <div
+    id="map"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
+  </div>
   </div>
 
 

@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 2019_11_27_100051) do
     t.string "smartphone_model"
     t.string "pet"
     t.string "category"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_boyfriends_on_user_id"
   end
 

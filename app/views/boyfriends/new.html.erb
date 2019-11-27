@@ -4,11 +4,17 @@
    <div class="form-inputs">
     <%= f.input :name %>
     <%= f.input :description %>
-    <%= f.input :location %>
-    <%= f.input :likes %>
-    <%= f.input :height %>
+    <%= f.input :location, placeholder: 'e.g. 32 Ben Yehuda, Tel Aviv'%>
+    <%= f.input :likes, label: 'Average likes', input_html: { class: 'js-range-slider2' } %>
+    <%= f.input :height, label: 'Height', input_html: { class: 'js-range-slider1' } %>
+    <div class= "row">
+      <div class="col">
     <%= f.input :smartphone_model, label: 'Smartphone', collection: ['iPhone 11 Pro', 'iPhone Xs', '< iPhone X', 'Oppo A5', 'Samsung Galaxy S10+', 'Huawei Mate 20', 'Nokia 6600', 'Blackberry Pearl 8100'] %>
+    </div>
+    <div class="col">
     <%= f.input :pet, collection: ['Huskey', 'Chichuahua', 'Dachshund', 'Guinea Pig', 'Ferret', 'New York Rat', 'Cat', 'Goldfish', 'Lizard', 'Mole'] %>
+    </div>
+    </div>
     <%= f.input :category, collection: ['Beach', 'Adventure', 'Cosy', 'Watersport', 'City', 'Kink', 'Daring', '**Celeberity**'] %>
     <%= f.fields_for :images do |p| %>
       <%= p.label "Select multiple images" %>
@@ -20,3 +26,8 @@
   <% end %>
   </div>
 </div>
+
+<%#= content_for(:after_js) do %>
+<%#= javascript_pack_tag 'slider_for_likes' %>
+<%# end %>
+
