@@ -1,5 +1,5 @@
 #result-header {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   padding-top: 80px;
 
@@ -11,7 +11,7 @@
 
 .cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
   margin: 0 auto;
   width: 80%;
@@ -191,6 +191,20 @@
   top: 77px;
 }
 
+.index {
+  display: flex;
+}
+
+#map {
+  height: 550px;
+  width: 60%;
+  margin: 10px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 100px;
+}
+
+
 @media(max-width: 1430px) {
   .cards {
     grid-template-columns: 1fr 1fr;
@@ -202,3 +216,4 @@
     grid-template-columns: 1fr;
   }
 }
+
