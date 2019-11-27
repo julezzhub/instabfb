@@ -2,130 +2,147 @@
 	<h1 class="m-5">Your past relationships, <strong><%= current_user.name %></strong></h1>
 </div>
 
-  <!-- CURRENT BOOKINGS -->
-  <h3 style= "margin-left: 100px"><strong>Your current boyfriends</strong></h3>
-  <div class="cards">
-    <% @current_bookings.each_with_index do |booking, i| %>
-    <div class="card-bf">
-      <div class="bf-upperwrap">
-        <img src="https://source.unsplash.com/collection/566311/<%= rand(1..268) %>", alt: <%= booking.boyfriend.user.name %>, class="avatar" style="object-fit: cover">
-        <span> <%= link_to booking.boyfriend.name ,boyfriend_path(booking.boyfriend) %></span>
-      </div>
-      <img src="https://source.unsplash.com/collection/2303600/<%= rand(1..268) %>" alt= <%= booking.boyfriend.name %>, class="card-bf-picture">
-      <div style="margin-top: 22px">
-        <div class="bf-text mx-5">
-          <div><%= booking.start_date.strftime("Start %d.%m.%Y")%></div>
-          <div><%= booking.end_date.strftime("End %d.%m.%Y") %></div>
-        </div>
-        <div class="bf-text">
-          <button type="button" class="btn-stretch" data-toggle="modal" data-target="#exampleModal<%= i %>">Rate Performance</button>
-        </div>
-      </div>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal<%= i %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Give him a Feedback</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+<!-- Centered Pills -->
+<!-- <ul class="nav nav-pills mb-3 nav-middle nav-tab-wrapper" id="pills-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active nav-tab-btn" id="pills-current-tab" data-toggle="pill" href="#pills-current" role="tab" aria-controls="pills-current" aria-selected="true">Current Boyfriends</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link nav-tab-btn" id="pills-past-tab" data-toggle="pill" href="#pills-past" role="tab" aria-controls="pills-past" aria-selected="false">Past Boyfriends</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link nav-tab-btn" id="pills-created-tab" data-toggle="pill" href="#pills-created" role="tab" aria-controls="pills-created" aria-selected="false">Created Boyfriends</a>
+  </li>
+</ul> -->
+
+<ul class="nav nav-tabs nav-tab-wrapper" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active nav-tab-btn" id="current-tab" data-toggle="tab" href="#current" role="tab" aria-controls="current" aria-selected="true">Current Bookings</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link nav-tab-btn" id="past-tab" data-toggle="tab" href="#past" role="tab" aria-controls="past" aria-selected="false">Past Bookings</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link nav-tab-btn" id="created-tab" data-toggle="tab" href="#created" role="tab" aria-controls="created" aria-selected="false">Created Boyfriends</a>
+  </li>
+</ul>
+
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="current" role="tabpanel" aria-labelledby="current-tab">
+
+    <!-- CURRENT BOOKINGS -->
+    <div class="cards">
+      <% @current_bookings.each_with_index do |booking, i| %>
+        <div class="card-bf">
+          <div class="bf-upperwrap">
+            <img src="https://source.unsplash.com/collection/566311/<%= rand(1..268) %>", alt: <%= booking.boyfriend.user.name %>, class="avatar" style="object-fit: cover">
+            <span> <%= link_to booking.boyfriend.name ,boyfriend_path(booking.boyfriend) %></span>
           </div>
-          <div class="modal-body">
-            <%= render "reviews/new", boyfriend: booking.boyfriend, review: Review.new %>
+          <img src="https://source.unsplash.com/collection/2303600/<%= rand(1..268) %>" alt= <%= booking.boyfriend.name %>, class="card-bf-picture">
+          <div style="margin-top: 22px">
+            <div class="bf-text mx-5">
+              <div><%= booking.start_date.strftime("Start %d.%m.%Y")%></div>
+              <div><%= booking.end_date.strftime("End %d.%m.%Y") %></div>
+            </div>
+            <div class="bf-text">
+              <button type="button" class="btn-stretch" data-toggle="modal" data-target="#exampleModal<%= i %>">Rate Performance</button>
+            </div>
           </div>
         </div>
-      </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal<%= i %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Give him a Feedback</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= render "reviews/new", boyfriend: booking.boyfriend, review: Review.new %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal end -->
+      <% end %>
     </div>
-    <!-- Modal end -->
-    <% end %>
   </div>
 
-<br>
-<br>
   <!-- PAST BOOKINGS -->
-  <h3 style= "margin-left: 100px"> <strong>Your past boyfriends</strong></h3>
-  <div class="cards">
-    <% @past_bookings.each_with_index do |booking, i| %>
-    <div class="card-bf">
-      <div class="bf-upperwrap">
-        <img src="https://source.unsplash.com/collection/566311/<%= rand(1..268) %>", alt: <%= booking.boyfriend.user.name %>, class="avatar" style="object-fit: cover">
-        <span> <%= link_to booking.boyfriend.name ,boyfriend_path(booking.boyfriend) %></span>
-      </div>
-      <img src="https://source.unsplash.com/collection/2303600/<%= rand(1..268) %>" alt= <%= booking.boyfriend.name %>, class="card-bf-picture">
-      <div style="margin-top: 22px">
-        <div class="bf-text mx-5">
-          <div><%= booking.start_date.strftime("Start %d.%m.%Y")%></div>
-          <div><%= booking.end_date.strftime("End %d.%m.%Y") %></div>
+  <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-tab">
+    <div class="cards">
+      <% @past_bookings.each_with_index do |booking, i| %>
+      <div class="card-bf">
+        <div class="bf-upperwrap">
+          <img src="https://source.unsplash.com/collection/566311/<%= rand(1..268) %>", alt: <%= booking.boyfriend.user.name %>, class="avatar" style="object-fit: cover">
+          <span> <%= link_to booking.boyfriend.name ,boyfriend_path(booking.boyfriend) %></span>
         </div>
-        <div class="bf-text">
-          <button type="button" class="btn-stretch" data-toggle="modal" data-target="#exampleModal<%= i %>">Rate Performance</button>
-        </div>
-      </div>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal<%= i %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Give him a Feedback</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+        <img src="https://source.unsplash.com/collection/2303600/<%= rand(1..268) %>" alt= <%= booking.boyfriend.name %>, class="card-bf-picture">
+        <div style="margin-top: 22px">
+          <div class="bf-text mx-5">
+            <div><%= booking.start_date.strftime("Start %d.%m.%Y")%></div>
+            <div><%= booking.end_date.strftime("End %d.%m.%Y") %></div>
           </div>
-          <div class="modal-body">
-            <%= render "reviews/new", boyfriend: booking.boyfriend, review: Review.new %>
+          <div class="bf-text">
+            <button type="button" class="btn-stretch" data-toggle="modal" data-target="#exampleModal<%= i %>">Rate Performance</button>
           </div>
         </div>
       </div>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal<%= i %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Give him a Feedback</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= render "reviews/new", boyfriend: booking.boyfriend, review: Review.new %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal end -->
+      <% end %>
     </div>
-    <!-- Modal end -->
-    <% end %>
   </div>
 
   <!-- MY BOOKINGS -->
-
- <h3 style= "margin-left: 100px"> <strong>Your boyfriends</strong></h3>
-  <div class="cards">
-    <% current_user.bookings.each_with_index do |booking, i| %>
-    <div class="card-bf">
-      <div class="bf-upperwrap">
-        <img src="https://source.unsplash.com/collection/566311/<%= rand(1..268) %>", alt: <%= booking.boyfriend.user.name %>, class="avatar" style="object-fit: cover">
-        <span> <%= link_to booking.boyfriend.name ,boyfriend_path(booking.boyfriend) %></span>
-      </div>
-      <img src="https://source.unsplash.com/collection/2303600/<%= rand(1..268) %>" alt= <%= booking.boyfriend.name %>, class="card-bf-picture">
-      <div style="margin-top: 22px">
-        <div class="bf-text mx-5">
-          <div><%= booking.start_date.strftime("Start %d.%m.%Y")%></div>
-          <div><%= booking.end_date.strftime("End %d.%m.%Y") %></div>
-        </div>
-        <div class="bf-text">
-          <button type="button" class="btn-stretch" data-toggle="modal" data-target="#exampleModal<%= i %>">Rate Performance</button>
-        </div>
-      </div>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal<%= i %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Give him a Feedback</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+  <div class="tab-pane fade" id="created" role="tabpanel" aria-labelledby="created-tab">
+   <div class="cards">
+      <% current_user.boyfriends.each do |boyfriend| %>
+        <%= link_to boyfriend_path(boyfriend) do %>
+          <div class="card-bf">
+            <div class="bf-upperwrap">
+              <img src="https://source.unsplash.com/collection/566311/<%= rand(1..268) %>", alt: <%= boyfriend.user.name %>, class="avatar" style="object-fit: cover">
+                  <!-- DON'T DELETE next line! Need cl_image_tag for actual user input, but img for hard code for demo purposes
+                    <%#= image_tag "https://source.unsplash.com/collection/566311/", alt: boyfriend.user.name, class:"avatar"%> -->
+              <span><%= boyfriend.name %></span>
+            </div>
+            <img src="https://source.unsplash.com/collection/2303600/<%= rand(1..268) %>" alt= <%= boyfriend.name %>, class="card-bf-picture">
+                  <%#= image_tag "img1.jpg", alt: boyfriend.name, class:"card-bf-picture"%>
+            <div class="bf-text">
+              <div>
+                <%= image_tag "instaheart.png", alt: "Likes Icon", id:"heart-icon" %><span id="likes"><%= boyfriend.likes %> Likes</span>
+                <span id="height-text"><%= boyfriend.height.fdiv(100) %>m</span> <%= image_tag "height_icon.png", alt: "Height Icon", id:"height-icon" %>
+              </div>
+              <div>
+                <%= image_tag "phone.png", alt: "Phone Icon", id:"phone-icon" %><span id="phone-model"><%= boyfriend.smartphone_model %></span>
+                <span id="location"><%= boyfriend.location %></span> <%= image_tag "pin.png", alt: "Pin Icon", id:"pin-icon" %>
+              </div>
+              <div>
+                <%= image_tag "paw.png", alt: "Paw Icon", id:"paw-icon" %><span id="pet"><%= boyfriend.pet.capitalize %></span>
+                <span id="price"><%= rand(10..170) %>.<%= rand(0..9) %>0€</span> <%= image_tag "pricetag.png", alt: "Price Icon", id:"price-icon" %>
+              </div>
+            </div>
           </div>
-          <div class="modal-body">
-            <%= render "reviews/new", boyfriend: booking.boyfriend, review: Review.new %>
-          </div>
-        </div>
-      </div>
+        <% end %>
+      <% end %>
     </div>
-    <!-- Modal end -->
-    <% end %>
   </div>
-
-
-
-
-
+</div>

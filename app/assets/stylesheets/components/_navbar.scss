@@ -21,7 +21,8 @@
 }
 
 .navbar-trans .navbar-brand img {
-  width: 40px;
+  width: 45px;
+  height: 40px;
 }
 
 .nav-btn {
@@ -52,9 +53,8 @@
 }
 
 .logo {
-	border: 1px solid black;
+	border: 1px solid #FF5F85;
   border-radius: 25%;
-  padding: 1px;
   }
 
 .navbar-hide {
@@ -65,3 +65,5 @@
 .navbar {
   transition: 0.5s;
 }
+
+
