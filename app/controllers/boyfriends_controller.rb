@@ -19,8 +19,6 @@ class BoyfriendsController < ApplicationController
         @location_search = params['search']['location']
         @message = "These Instaboys from #{@location_search} are ready to up your gram"
         @boyfriends = policy_scope(Boyfriend).near(@location_search, 20)
-        # @likes = @search[:likes].split(";").map(&:to_i)
-        # @likes_range = Boyfriend.range_likes(@likes[0], @likes[1])
           # @height = @search['height']
           # @smartphone_model = @search['smartphone_model']
           # @pet = @search['pet']
@@ -70,6 +68,8 @@ class BoyfriendsController < ApplicationController
   end
 
   def new
+    #@likes = params[:boyfriend][:likes].split(";").map(&:to_i)
+    #@likes_range = Boyfriend.range_likes(@likes[0], @likes[1])
     @boyfriend = Boyfriend.new
     authorize @boyfriend
     @image = @boyfriend.images.build
