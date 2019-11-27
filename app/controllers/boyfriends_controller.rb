@@ -1,33 +1,54 @@
 class BoyfriendsController < ApplicationController
   def index
-    @boyfriends = policy_scope(Boyfriend).geocoded #returns boyfriends with coordinates
-    @markers = @boyfriends.map do |boyfriend|
-      {
-        lat: boyfriend.latitude,
-        lng: boyfriend.longitude
-      }
-    end
-
-    if params.include?(:search) #|| params.include?(:boyfriend)
-      # @search = params['search'] || params['boyfriend']
-      @location_search = params['search']['location']
-      @message = "These Instaboys from #{@location_search} are ready to up your gram"
-      @boyfriends = policy_scope(Boyfriend).near(@location_search, 10)
-
-      # @likes = @search[:likes].split(";").map(&:to_i)
-      # @likes_range = Boyfriend.range_likes(@likes[0], @likes[1])
-        # @height = @search['height']
-        # @smartphone_model = @search['smartphone_model']
-        # @pet = @search['pet']
-        # @category = @search['category']
-      # @boyfriends = @likes_range.select { |boyfriend| (boyfriend.location == @location_search) }
-      if @boyfriends.empty?
-        @message = "No Instalovers meeting your standards. Browse some of our other options below."
-        @boyfriends
-      end
+    @boyfriend = Boyfriend.new
+    empty_array = []
+    if empty_array
+       @boyfriends = policy_scope(Boyfriend).geocoded
     else
-      @message = 'Browse some our best Instagram boyfriends'
-      @boyfriends
+      if params[:search][:location].present? #|| params.include?(:boyfriend)
+        # @search = params['search'] || params['boyfriend']
+        @location_search = params['search']['location']
+        @message = "These Instaboys from #{@location_search} are ready to up your gram"
+        @boyfriends = policy_scope(Boyfriend).near(@location_search, 20)
+        # @likes = @search[:likes].split(";").map(&:to_i)
+        # @likes_range = Boyfriend.range_likes(@likes[0], @likes[1])
+          # @height = @search['height']
+          # @smartphone_model = @search['smartphone_model']
+          # @pet = @search['pet']
+          # @category = @search['category']
+        # @boyfriends = @likes_range.select { |boyfriend| (boyfriend.location == @location_search) }
+        @markers = @boyfriends.map do |boyfriend|
+          {
+            lat: boyfriend.latitude,
+            lng: boyfriend.longitude,
+            infoWindow: render_to_string(partial: "info_window", locals: { boyfriend: boyfriend }),
+            image_url: helpers.asset_url('photographer.png')
+          }
+        end
+        if @boyfriends.empty?
+          @message = "No Instalovers meeting your standards. Browse some of our other options below."
+          @boyfriends = policy_scope(Boyfriend).geocoded
+          @markers = @boyfriends.map do |boyfriend|
+            {
+              lat: boyfriend.latitude,
+              lng: boyfriend.longitude,
+              infoWindow: render_to_string(partial: "info_window", locals: { boyfriend: boyfriend }),
+              image_url: helpers.asset_url('photographer.png')
+            }
+          end
+        end
+      else
+        @message = 'Browse some of our best Instagram boyfriends'
+        @boyfriends = policy_scope(Boyfriend).geocoded
+        @markers = @boyfriends.map do |boyfriend|
+            {
+              lat: boyfriend.latitude,
+              lng: boyfriend.longitude,
+              infoWindow: render_to_string(partial: "info_window", locals: { boyfriend: boyfriend }),
+              image_url: helpers.asset_url('photographer.png')
+            }
+        end
+      end
     end
   end
 

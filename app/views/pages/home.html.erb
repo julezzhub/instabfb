@@ -5,7 +5,7 @@
     <div class="form">
       <div class="input1 col-12">
         <%= simple_form_for :search, :url => boyfriends_path, :method => :get do |f|%>
-        <%= f.input 'Enter your city'%>
+        <%= f.input :location%>
       </div>
       <div class="input2 col-12">
         <%#= f.input :likes, label: 'Average likes', input_html: { class: 'js-range-slider' } %>
