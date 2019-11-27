@@ -1,0 +1,22 @@
+.nav-tab-wrapper {
+	width: 60%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+
+	.nav-link {
+		background-color: #CCCCCC;
+	}
+
+	.nav-link.active {
+		background-color: #FF5F85;
+	}
+
+	.nav-tab-btn {
+  padding-right: 20px !important;
+  border-radius: 2px !important;
+  font-weight: 400 !important;
+  opacity: 0.8 !important;
+  transition: 0.5s !important;
+	}
+}

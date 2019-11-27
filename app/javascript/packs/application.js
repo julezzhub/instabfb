@@ -1,6 +1,7 @@
 import "bootstrap";
 import 'ion-rangeslider/css/ion.rangeSlider.min.css';
 import "../plugins/flatpickr";
+import { initSliders } from './sliders'
 
 
 $(window).scroll(function(e) {
@@ -13,4 +14,6 @@ $(window).scroll(function(e) {
         $('.navbar').removeClass("navbar-hide");
     }
 });
+
+initSliders()
 
