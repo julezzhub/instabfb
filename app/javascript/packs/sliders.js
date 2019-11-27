@@ -16,7 +16,7 @@ const initSliders = () => {
     max: 100000,
     from: 2000,
     to: 10000,
-});
+  });
 };
 
 export { initSliders };
