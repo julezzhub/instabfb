@@ -3,13 +3,13 @@ class BoyfriendsController < ApplicationController
     @boyfriend = Boyfriend.new
     empty_array = []
     if empty_array
-       @boyfriends = Boyfriend.geocoded
+       @boyfriends = policy_scope(Boyfriend).geocoded
     else
       if params[:search][:location].present? #|| params.include?(:boyfriend)
         # @search = params['search'] || params['boyfriend']
         @location_search = params['search']['location']
         @message = "These Instaboys from #{@location_search} are ready to up your gram"
-        @boyfriends = Boyfriend.near(@location_search, 20)
+        @boyfriends = policy_scope(Boyfriend).near(@location_search, 20)
         # @likes = @search[:likes].split(";").map(&:to_i)
         # @likes_range = Boyfriend.range_likes(@likes[0], @likes[1])
           # @height = @search['height']
@@ -27,7 +27,7 @@ class BoyfriendsController < ApplicationController
         end
         if @boyfriends.empty?
           @message = "No Instalovers meeting your standards. Browse some of our other options below."
-          @boyfriends = Boyfriend.geocoded
+          @boyfriends = policy_scope(Boyfriend).geocoded
           @markers = @boyfriends.map do |boyfriend|
             {
               lat: boyfriend.latitude,
@@ -39,7 +39,7 @@ class BoyfriendsController < ApplicationController
         end
       else
         @message = 'Browse some of our best Instagram boyfriends'
-        @boyfriends = Boyfriend.geocoded
+        @boyfriends = policy_scope(Boyfriend).geocoded
         @markers = @boyfriends.map do |boyfriend|
             {
               lat: boyfriend.latitude,
@@ -57,10 +57,12 @@ class BoyfriendsController < ApplicationController
     @images = @boyfriend.images.all
     @review = Review.new
     @booking = Booking.new
+    authorize @boyfriend
   end
 
   def new
     @boyfriend = Boyfriend.new
+    authorize @boyfriend
     @image = @boyfriend.images.build
   end
 
@@ -76,6 +78,7 @@ class BoyfriendsController < ApplicationController
       @boyfriend.images.build
       render 'new'
     end
+    authorize @boyfriend
   end
 
   private

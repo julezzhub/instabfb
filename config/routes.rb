@@ -6,6 +6,6 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
   namespace :account do
-    resources :bookings, only: [:show]
+    resources :bookings, only: [:index]
   end
 end
