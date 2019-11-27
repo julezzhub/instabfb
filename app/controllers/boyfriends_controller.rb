@@ -1,18 +1,19 @@
 class BoyfriendsController < ApplicationController
   def index
-    @boyfriend = Boyfriend.new
-    @boyfriends = Boyfriend.geocoded #returns boyfriends with coordinates
+    @boyfriends = policy_scope(Boyfriend).geocoded #returns boyfriends with coordinates
     @markers = @boyfriends.map do |boyfriend|
       {
         lat: boyfriend.latitude,
         lng: boyfriend.longitude
       }
     end
+
     if params.include?(:search) #|| params.include?(:boyfriend)
       # @search = params['search'] || params['boyfriend']
       @location_search = params['search']['location']
       @message = "These Instaboys from #{@location_search} are ready to up your gram"
-      @boyfriends = Boyfriend.near(@location_search, 10)
+      @boyfriends = policy_scope(Boyfriend).near(@location_search, 10)
+
       # @likes = @search[:likes].split(";").map(&:to_i)
       # @likes_range = Boyfriend.range_likes(@likes[0], @likes[1])
         # @height = @search['height']
@@ -35,10 +36,12 @@ class BoyfriendsController < ApplicationController
     @images = @boyfriend.images.all
     @review = Review.new
     @booking = Booking.new
+    authorize @boyfriend
   end
 
   def new
     @boyfriend = Boyfriend.new
+    authorize @boyfriend
     @image = @boyfriend.images.build
   end
 
@@ -54,6 +57,7 @@ class BoyfriendsController < ApplicationController
       @boyfriend.images.build
       render 'new'
     end
+    authorize @boyfriend
   end
 
   private
