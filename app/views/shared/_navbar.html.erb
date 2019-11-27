@@ -22,6 +22,7 @@
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "My relationships", account_bookings_path(current_user), class: "dropdown-item" %>
             <%= link_to "Account", "#", class: "dropdown-item" %>
+            <%= link_to "Pending Bookings", pending_account_bookings_path, class: "dropdown-item" %>
             <%= link_to "Refer Boyfriends", "#", class: "dropdown-item" %>
             <%= link_to "Gift a Boyfriend", "#", class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
