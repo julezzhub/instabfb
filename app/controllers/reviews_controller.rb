@@ -9,6 +9,7 @@ class ReviewsController < ApplicationController
     else
       render 'boyfriends/show'
     end
+    authorize @review
   end
 
   def review_params

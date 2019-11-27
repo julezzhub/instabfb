@@ -4,6 +4,7 @@ ruby '2.6.3'
 gem 'devise'
 gem 'bootsnap', require: false
 gem 'jbuilder', '~> 2.0'
+gem 'geocoder'
 gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.2.3'
@@ -19,6 +20,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'faker'
 gem 'flatpickr'
+gem 'pundit'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
