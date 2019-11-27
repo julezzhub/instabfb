@@ -1,9 +1,18 @@
 class BoyfriendsController < ApplicationController
   def index
     @boyfriend = Boyfriend.new
-    empty_array = []
-    if empty_array
-       @boyfriends = policy_scope(Boyfriend).geocoded
+    unless params['search']
+      @boyfriends = policy_scope(Boyfriend).geocoded
+
+    @markers = @boyfriends.map do |boyfriend|
+          {
+            lat: boyfriend.latitude,
+            lng: boyfriend.longitude,
+            infoWindow: render_to_string(partial: "info_window", locals: { boyfriend: boyfriend }),
+            image_url: helpers.asset_url('photographer.png')
+          }
+        end
+
     else
       if params[:search][:location].present? #|| params.include?(:boyfriend)
         # @search = params['search'] || params['boyfriend']
