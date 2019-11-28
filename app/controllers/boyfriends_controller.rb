@@ -68,16 +68,17 @@ class BoyfriendsController < ApplicationController
   end
 
   def new
-    #@likes = params[:boyfriend][:likes].split(";").map(&:to_i)
-    #@likes_range = Boyfriend.range_likes(@likes[0], @likes[1])
     @boyfriend = Boyfriend.new
     authorize @boyfriend
     @image = @boyfriend.images.build
   end
 
   def create
+    # @likes = params[:boyfriend][:likes].split(";").map(&:to_i)
+    # @likes_range = Boyfriend.range_likes(@likes[0], @likes[1])
     @boyfriend = Boyfriend.new(boyfriend_params)
     @boyfriend.user = current_user
+
     if @boyfriend.save
       params[:images]['link'].each do |photo|
         @image = @boyfriend.images.create!(link: photo)
