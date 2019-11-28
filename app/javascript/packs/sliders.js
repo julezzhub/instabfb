@@ -16,6 +16,13 @@ const initSliders = () => {
     max: 100000,
     from: 20000,
   });
+
+  $(".js-range-slider3").ionRangeSlider({
+    type: 'single',
+    min: 0,
+    max: 2000,
+    from: 500,
+  });
 };
 
 export { initSliders };
