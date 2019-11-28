@@ -1,7 +1,6 @@
 <div class="main-container" id="img">
   <div class="search-container row">
-    <h2>Rent an Instagram Boyfriend</h2>
-
+    <h2>Find your IGBF</h2>
     <div class="form">
       <div class="input1 col-12">
         <%= simple_form_for :search, :url => boyfriends_path, :method => :get do |f|%>
@@ -14,6 +13,9 @@
       <% end %>
     </div>
   </div>
+    <div class="typed-container">
+      <span id="typed"></span>
+    </div>
 </div>
 
 <%#= content_for(:after_js) do %>
