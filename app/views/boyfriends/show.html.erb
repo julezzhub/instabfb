@@ -98,8 +98,8 @@
             <h4>Hook me up!</h4>
             <br>
             <%= simple_form_for [@boyfriend, @booking] do |f| %>
-            <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"}%>
-            <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+            <%= f.input :start_date, as: :string, required: false, input_html: {id: "range_start"}%>
+            <%= f.input :end_date, as: :string, required: false, input_html: {id: "range_end"} %>
             <%= f.button :submit, 'Get Relationship', class: "btn-stretch"%>
             <% end %>
           </div>
@@ -116,7 +116,7 @@
   <% else %>
   <% @boyfriend.reviews.each do |review| %>
   <div class="notification">
-  <img src='https://source.unsplash.com/collection/566311/<%= rand(1..268) %>' class="avatar" style="object-fit: cover; width: 60px; height: 60px" />
+  <%= cl_image_tag review.user.avatar, alt: review.user.name, class:"avatar", style:"object-fit: cover; width: 60px; height: 60px"%>
   <div class="notification-content">
     <p><small> <strong> <%= review.user.name %></strong> on <%=review.updated_at.strftime("%d %B %Y") %></small></p>
     <p><%= review.description %></p>
