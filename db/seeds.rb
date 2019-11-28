@@ -26,7 +26,12 @@ addresses = ['32 Rothschild Boulevard, Tel Aviv', '70 Rothschild Boulevard, Tel 
   user = User.create(email: Faker::Internet.email, name: Faker::FunnyName.name, password: Faker::Alphanumeric.alpha(number: 10), remote_avatar_url: "https://source.unsplash.com/collection/566311/#{rand(1..268)}")
   boyfriend = Boyfriend.create!(name: Faker::Name.male_first_name + " " + Faker::Name.last_name, description: Faker::Superhero.name,
     likes: rand(10000..45000), location: addresses.sample, height: rand(160..210),
+
     smartphone_model: Faker::Device.model_name, pet: Faker::Creature::Animal.name, user: user, price: rand(50..2000))
+  3.times do
+    image = Image.create!(boyfriend: boyfriend, remote_link_url: "https://source.unsplash.com/collection/2303600/#{rand(1..268)}")
+  end
+
   image = Image.create!(boyfriend: boyfriend, remote_link_url: "https://source.unsplash.com/collection/2303600/#{rand(1..268)}")
 end
 
