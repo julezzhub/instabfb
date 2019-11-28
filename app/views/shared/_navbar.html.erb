@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon <%= 'navbar-trans fixed-top' if root_path  %>" style="background: linear-gradient(rgba(198,206,210,0.2) 1%, rgba(250,242,244,0.2) 100%) no-repeat 50% 50% / 100% 100%">
   <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "logo1.gif", class: "logo" %>
+    <%= image_tag "logo1.gif"%>
     <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,7 +30,10 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <%= link_to "Login", new_user_session_path, class: "nav-link nav-btn nav-login" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign-up", new_user_registration_path, class: "nav-link signup" %>
         </li>
       <% end %>
     </ul>

@@ -203,18 +203,23 @@
   position: sticky;
   top: 100px;
   box-shadow: 0px 10px 30px rgba(0,0,0,.2);
+  margin-right: 0px;
 }
 
 
 @media(max-width: 1430px) {
   .cards {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+  }
+
+  #map {
+    width: 75%;
   }
 }
 
-@media(max-width: 900px) {
-  .cards {
-    grid-template-columns: 1fr;
+@media(max-width: 690px) {
+  #map {
+    display: none;
   }
 }
 

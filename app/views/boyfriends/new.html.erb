@@ -1,4 +1,4 @@
-<div class="main-containerBoy" id="imgBoy">
+<div class="main-container" id="imgBoy">
   <div class="devise-container" style="height: 940px;">
   <%= simple_form_for @boyfriend, html: { multipart: true } do |f| %>
    <div class="form-inputs">
@@ -12,7 +12,7 @@
     </div>
     <div class="col">
     <%= f.input :pet, collection: ['Huskey', 'Chichuahua', 'Dachshund', 'Guinea Pig', 'Ferret', 'New York Rat', 'Cat', 'Goldfish', 'Lizard', 'Mole'] %>
-    </div>
+    </div>  
     </div>
     <%= f.input :likes, label: 'Average likes per post', input_html: { class: 'js-range-slider2' } %>
     <%= f.input :height, label: 'Height', input_html: { class: 'js-range-slider1' } %>
