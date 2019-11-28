@@ -12,7 +12,9 @@ class Boyfriend < ApplicationRecord
   accepts_nested_attributes_for :images
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
+
+
   def self.range_likes(min, max)
-    Boyfriend.all.select { |boyfriend| (boyfriend.likes >= min && boyfriend.likes <= max) }
+    Boyfriend.where("likes >= ? AND likes <= ?", min, max)
   end
 end

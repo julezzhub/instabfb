@@ -11,11 +11,10 @@ const initSliders = () => {
 
 	// likes
 	$(".js-range-slider2").ionRangeSlider({
-    type: 'double',
+    type: 'single',
     min: 0,
     max: 100000,
-    from: 2000,
-    to: 10000,
+    from: 20000,
   });
 };
 
