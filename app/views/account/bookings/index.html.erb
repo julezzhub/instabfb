@@ -134,7 +134,7 @@
               </div>
               <div>
                 <%= image_tag "paw.png", alt: "Paw Icon", id:"paw-icon" %><span id="pet"><%= boyfriend.pet.capitalize %></span>
-                <span id="price"><%= rand(10..170) %>.<%= rand(0..9) %>0€</span> <%= image_tag "pricetag.png", alt: "Price Icon", id:"price-icon" %>
+                <span id="price">€<%= boyfriend.price %></span> <%= image_tag "pricetag.png", alt: "Price Icon", id:"price-icon" %>
               </div>
             </div>
           </div>
