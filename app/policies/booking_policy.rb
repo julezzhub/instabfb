@@ -12,4 +12,12 @@ class BookingPolicy < ApplicationPolicy
   def pending?
     true
   end
+
+  def accept?
+    true
+  end
+
+  def reject?
+    true
+  end
 end
