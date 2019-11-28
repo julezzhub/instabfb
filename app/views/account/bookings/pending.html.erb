@@ -13,13 +13,10 @@
       <%= link_to boyfriend_path(boyfriend) do %>
         <div class="card-bf">
           <div class="bf-upperwrap">
-            <img src="https://source.unsplash.com/collection/566311/<%= rand(1..268) %>", alt: <%= boyfriend.user.name %>, class="avatar" style="object-fit: cover">
-            <!-- DON'T DELETE next line! Need cl_image_tag for actual user input, but img for hard code for demo purposes
-              <%#= image_tag "https://source.unsplash.com/collection/566311/", alt: boyfriend.user.name, class:"avatar"%> -->
-            <span><%= boyfriend.name %></span>
+            <%= cl_image_tag boyfriend.user.avatar, alt: boyfriend.user.name, class:"avatar", style:"object-fit: cover"%>
+           <span><%= boyfriend.name %></span>
           </div>
-          <img src="https://source.unsplash.com/collection/2303600/<%= rand(1..268) %>" alt= <%= boyfriend.name %>, class="card-bf-picture">
-          <%#= image_tag "img1.jpg", alt: boyfriend.name, class:"card-bf-picture"%>
+          <%= cl_image_tag boyfriend.images.first.link, alt: boyfriend.name, class:"card-bf-picture"%>
           <div class="bf-text">
             <div>
               <%= image_tag "instaheart.png", alt: "Likes Icon", id:"heart-icon" %><span id="likes"><%= boyfriend.likes %> Likes</span>
@@ -44,9 +41,7 @@
             <% boyfriend.bookings.where(status: nil).each do |booking| %>
               <div class="booking-request">
                 <div class="request-upperwrap">
-                  <img src="https://source.unsplash.com/collection/566311/<%= rand(1..268) %>", alt: <%= boyfriend.user.name %>, class="avatar" style="object-fit: cover">
-                  <!-- DON'T DELETE next line! Need cl_image_tag for actual user input, but img for hard code for demo purposes
-                    <%#= image_tag "https://source.unsplash.com/collection/566311/", alt: boyfriend.user.name, class:"avatar"%> -->
+                  <%= cl_image_tag boyfriend.user.avatar, alt: boyfriend.user.name, class:"avatar", style:"object-fit: cover"%>
                   <span style="padding-left: 8px;"><%= booking.user.name %> would like to take <%= boyfriend.name %> for an instashoot from <b><%= booking.start_date.strftime("%d %B") %></b> to
                       <b><%= booking.end_date.strftime("%d %B %Y") %></b></span>
                 </div>

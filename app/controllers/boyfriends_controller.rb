@@ -1,6 +1,7 @@
 class BoyfriendsController < ApplicationController
   def index
     @boyfriend = Boyfriend.new
+    @message = 'Browse some of our best Instagram boyfriends'
     unless params['search']
       @boyfriends = policy_scope(Boyfriend).geocoded
 
@@ -45,7 +46,6 @@ class BoyfriendsController < ApplicationController
           end
         end
       else
-        @message = 'Browse some of our best Instagram boyfriends'
         @boyfriends = policy_scope(Boyfriend).geocoded
         @markers = @boyfriends.map do |boyfriend|
             {
