@@ -40,10 +40,32 @@
 
 .nav-link {
   color: #FFFFFF !important;
+  text-align: center !important;
 }
 .nav-login {
-  padding-right: 30px !important;
-  padding-left: 30px !important;
+  width: 100px;
+  border: solid 1px !important;;
+  border-color: #FF5F85 !important;
+}
+
+.signup {
+    width: 100px;
+    color: #FF5F85 !important;;
+    border: solid 1px !important;;
+    border-color: #FF5F85 !important;
+    background-color: none;
+    border-radius: 6px;
+    font-weight: 400;
+    opacity: 0.8 !important;
+    transition: 0.5s !important;
+    margin-left: 20px !important;
+    &:hover {
+    opacity: 1 !important;
+    transition: 0.5s !important;
+    text-decoration: none !important;
+
+  }
+
 }
 
 .nav-color {
