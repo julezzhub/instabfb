@@ -14,6 +14,11 @@
           <div class="bf-upperwrap">
             <%= cl_image_tag boyfriend.user.avatar, alt: boyfriend.user.name, class:"avatar", style:"object-fit: cover"%>
             <span><%= boyfriend.name %></span>
+            <% counter = 0
+            boyfriend.reviews.each do |review|
+              counter += review.rating
+            end%>
+            <span class="rating"><i class="fas fa-star-of-david" style="color: #FF5F85;"></i> <%= counter == 0 ? "no reviews" : counter.fdiv(boyfriend.reviews.length) %></span>
           </div>
           <%= cl_image_tag boyfriend.images.first.link, alt: boyfriend.name, class:"card-bf-picture"%>
           <div class="bf-text">

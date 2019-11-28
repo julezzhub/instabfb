@@ -27,7 +27,9 @@ addresses = ['32 Rothschild Boulevard, Tel Aviv', '70 Rothschild Boulevard, Tel 
   boyfriend = Boyfriend.create!(name: Faker::Name.male_first_name + " " + Faker::Name.last_name, description: Faker::Superhero.name,
     likes: rand(10000..45000), location: addresses.sample, height: rand(160..210),
     smartphone_model: Faker::Device.model_name, pet: Faker::Creature::Animal.name, user: user)
-  image = Image.create!(boyfriend: boyfriend, remote_link_url: "https://source.unsplash.com/collection/2303600/#{rand(1..268)}")
+  3.times do
+    image = Image.create!(boyfriend: boyfriend, remote_link_url: "https://source.unsplash.com/collection/2303600/#{rand(1..268)}")
+  end
 end
 
 Boyfriend.all.each do |boyfriend|
