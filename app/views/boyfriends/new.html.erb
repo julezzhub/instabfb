@@ -5,19 +5,20 @@
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :location, placeholder: 'e.g. 32 Ben Yehuda, Tel Aviv'%>
-    <%= f.input :likes, label: 'Average likes', input_html: { class: 'js-range-slider2' } %>
-    <%= f.input :height, label: 'Height', input_html: { class: 'js-range-slider1' } %>
+    <%= f.input :price, label: 'Price per day (€)', input_html: { class: 'js-range-slider3'} %>
     <div class= "row">
       <div class="col">
-    <%= f.input :smartphone_model, label: 'Smartphone', collection: ['iPhone 11 Pro', 'iPhone Xs', '< iPhone X', 'Oppo A5', 'Samsung Galaxy S10+', 'Huawei Mate 20', 'Nokia 6600', 'Blackberry Pearl 8100'] %>
+    <%= f.input :smartphone_model, label: 'Smartphone', collection: ['iPhone 11 Pro', 'iPhone Xs', 'iPhone X & below', 'Oppo A5', 'Samsung Galaxy S10+', 'Huawei Mate 20', 'Nokia 6600', 'Blackberry Pearl 8100'] %>
     </div>
     <div class="col">
     <%= f.input :pet, collection: ['Huskey', 'Chichuahua', 'Dachshund', 'Guinea Pig', 'Ferret', 'New York Rat', 'Cat', 'Goldfish', 'Lizard', 'Mole'] %>
     </div>
     </div>
+    <%= f.input :likes, label: 'Average likes per post', input_html: { class: 'js-range-slider2' } %>
+    <%= f.input :height, label: 'Height', input_html: { class: 'js-range-slider1' } %>
     <%= f.input :category, collection: ['Beach', 'Adventure', 'Cosy', 'Watersport', 'City', 'Kink', 'Daring', '**Celeberity**'] %>
     <%= f.fields_for :images do |p| %>
-      <%= p.label "Select multiple images" %>
+      <%= p.label "Select multiple images for your profile" %>
       <%= p.file_field :link, multiple: true, name: "images[link][]" %>
     <% end %>
     </div>

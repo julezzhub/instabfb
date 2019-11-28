@@ -26,7 +26,7 @@ addresses = ['32 Rothschild Boulevard, Tel Aviv', '70 Rothschild Boulevard, Tel 
   user = User.create(email: Faker::Internet.email, name: Faker::FunnyName.name, password: Faker::Alphanumeric.alpha(number: 10))
   boyfriend = Boyfriend.create!(name: Faker::Name.male_first_name + " " + Faker::Name.last_name, description: Faker::Superhero.name,
     likes: rand(10000..45000), location: addresses.sample, height: rand(160..210),
-    smartphone_model: Faker::Device.model_name, pet: Faker::Creature::Animal.name, user: user)
+    smartphone_model: Faker::Device.model_name, pet: Faker::Creature::Animal.name, user: user, price: rand(50..2000))
   5.times do
     Review.create!(description: Faker::Quote.most_interesting_man_in_the_world, rating: rand(1..5), user: user, boyfriend: boyfriend)
   end
