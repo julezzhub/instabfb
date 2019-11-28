@@ -16,19 +16,20 @@ class BookingsController < ApplicationController
   def accept
     @booking = Booking.find(params[:id])
     @booking.update(status: true)
+    authorize @booking
 
     redirect_to pending_account_bookings_path
     flash[:notice] = "Booking accepted - have a great shoot!"
-    authorize @booking
+
   end
 
   def reject
     @booking = Booking.find(params[:id])
     @booking.update(status: false)
+    authorize @booking
 
     redirect_to pending_account_bookings_path
     flash[:notice] = "Booking rejected"
-    authorize @booking
   end
 
   private
