@@ -91,14 +91,15 @@
 }
 
 #typed {
-  font-size: 40px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 70px;
   color: #FF5F85;
 }
 
 .typed-container {
   text-align: center;
   width: 100%;
-  text-shadow: 0.8px 0.8px #cccccc;
+  text-shadow: 1px 1px 14px black;
   position: absolute;
   top: 600px;
 }
